@@ -16,3 +16,8 @@ def test_get_coordinates_of_invalid_city():
 
     with pytest.raises(ValueError):
         get_city_coordinates(city)
+
+
+def test_get_coordinates_with_no_city():
+    with pytest.raises(ValueError):
+        get_city_coordinates(None)
