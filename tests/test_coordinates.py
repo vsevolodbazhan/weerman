@@ -1,6 +1,6 @@
 import pytest
 
-from weerman.weather import get_city_coordinates
+from weerman.coordinates import get_city_coordinates
 
 
 def test_get_coordinates_of_valid_city():
