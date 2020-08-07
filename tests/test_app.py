@@ -28,7 +28,6 @@ def test_weather_with_valid_city(client):
             "feels_like",
             "pressure",
             "humidity",
-            "visibility",
             "wind_speed",
         ]
     )

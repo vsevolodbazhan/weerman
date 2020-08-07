@@ -16,7 +16,6 @@ Weather = namedtuple(
         "feels_like",
         "pressure",
         "humidity",
-        "visibility",
         "wind_speed",
     ],
 )
@@ -51,7 +50,6 @@ def build_request_url(parameters: Dict[str, Any]) -> str:
 def parse_weather_response_parameters(parameters: Dict[str, Any]) -> Weather:
     weather = parameters["weather"][0]
     main = parameters["main"]
-    visibility = parameters["visibility"]
     wind = parameters["wind"]
 
     return Weather(
@@ -62,6 +60,5 @@ def parse_weather_response_parameters(parameters: Dict[str, Any]) -> Weather:
         feels_like=main["feels_like"],
         pressure=main["pressure"],
         humidity=main["humidity"],
-        visibility=visibility,
         wind_speed=wind["speed"],
     )

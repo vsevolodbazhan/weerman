@@ -71,7 +71,6 @@ def test_parse_valid_weather_response_parameters():
     assert weather.feels_like == 18.92
     assert weather.pressure == 1009
     assert weather.humidity == 93
-    assert weather.visibility == 10000
     assert weather.wind_speed == 2
 
 
@@ -96,5 +95,4 @@ def test_get_weather_by_coordinates():
     assert weather.feels_like == 18.92
     assert weather.pressure == 1009
     assert weather.humidity == 93
-    assert weather.visibility == 10000
     assert weather.wind_speed == 2
