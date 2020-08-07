@@ -58,7 +58,7 @@ def parse_weather_response_parameters(parameters: Dict[str, Any]) -> Weather:
         minimum_temperature=main["temp_min"],
         maximum_temperature=main["temp_max"],
         feels_like=main["feels_like"],
-        pressure=main["pressure"],
+        pressure=main["pressure"] * 0.75,
         humidity=main["humidity"],
         wind_speed=wind["speed"],
     )
