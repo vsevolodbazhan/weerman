@@ -10,13 +10,13 @@ Weather forecast microservice for [Tomoru](https://app.tomoru.ru/).
 
 Install dependencies using [pip](https://pip.pypa.io/en/stable/):
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
 or [Poetry](https://python-poetry.org):
 
-```
+```bash
 poetry install
 ```
 
@@ -26,7 +26,7 @@ Poetry will install dev-dependencies as well. So use that if you are planning to
 
 Run using [Gunicorn](https://gunicorn.org):
 
-```
+```bash
 gunicorn weerman.app:app
 ```
 
@@ -38,7 +38,7 @@ http GET http://127.0.0.1:8000/current-weather city==Vladivostok
 
 You should get this response:
 
-```
+```json
 HTTP/1.1 200 OK
 Connection: close
 Content-Length: 271
