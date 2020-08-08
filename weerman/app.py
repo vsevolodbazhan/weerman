@@ -13,16 +13,16 @@ def current_weather():
     try:
         city = request.args["city"]
     except KeyError:
-        return "City must be specified.", 400
+        return {"error": "City must be specified."}, 400
 
     try:
         coordinates = get_city_coordinates(city)
     except ValueError:
-        return "City does not exist.", 404
+        return {"error": "City does not exist."}, 404
 
     try:
         weather = get_weather_by_coordinates(coordinates)
     except RequestException:
-        return "Something went wrong.", 500
+        return {"error": "Something went wrong."}, 500
 
     return weather._asdict()
