@@ -8,8 +8,8 @@ from .weather import get_weather_by_coordinates
 app = Flask(__name__)
 
 
-@app.route("/weather")
-def weather():
+@app.route("/current_weather")
+def current_weather():
     try:
         city = request.args["city"]
     except KeyError:
