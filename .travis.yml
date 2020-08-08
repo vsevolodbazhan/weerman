@@ -1,12 +1,14 @@
 language: python
-python:
-  - 3.8
-env:
-  global:
-    secure: "BxVz1rggw7dK+ylDyzPrO4uWaOChWOXWVEY8VG6a+KpY+feTE22V5ZK6T8S+9WuXhysGJ0oAhDGBECABp69//jJmmz+ZUFmcDCKqbif1bX5L0sHQ7eqRYC1ZhGi7vYNLIwU2FxB/9I8MtPkUZUsLg89W/izveqPYG745WXYJMmFNfvSOP/QoExQut8u6p9A5qLD5/AN2OUtES+kQdJ8QTFkGGvMITra5OJztbn7e9gOao8M6+7O6HCBEHVO2aYzOnnmPbO9mX3YsSthBVShHDR/q6Sl/5RMduQi3PVBXaxyMttXh+FZO+PoPEJp7kP7D2SzyCDXwbyJC2L9ZPteZsYRa9jMbSrIJrz7V2zL9+YdsIf6HA6TnZyn5aRssQbKWEzxkUYVanAB3lDU/as/Ia879g2A6ZqLz1lVFauMnf7ut9IePmnFaNskE1mv8XKwtDhAzAV/K8k9ZKbJw3wvDVw8PffWlBnukyS5PGYLZkJtYCVcEPjZ2YI+WGe4kKRovhs9mAxVkkHrlkzH/w9+SqdP3UtvM9ww89G2iivEUTGiMh5OcSqEfKkuv0LFtKKsZKGmhVTHYZkXvuAX/1/+p5jLHybOmr7yuas8w+nfp+YVGjGCeCyCaXGmCUGSpzcdu8mKrudrZlRtxgolZAxrnlfYI0j0x08Pwc4hh41z4u2I="
+python: 3.8
+
 before_install:
   - pip install poetry
+
 install:
   - poetry install
+
 script:
-  - poetry run pytest
+  - poetry run pytest --cov=. tests/
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
