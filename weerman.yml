@@ -1,0 +1,83 @@
+openapi: "3.0.2"
+
+info:
+  title: Weerman
+  description: Микросервис прогноза погоды
+  version: "0.0.1"
+
+servers:
+  - url: https://weerman.herokuapp.com
+
+paths:
+  /current_weather:
+    get:
+      operationId: getCurrentWeatherForCity
+      summary: Узнать текущую погоду в городе
+      tags:
+        - tomoru/call
+      parameters:
+        - name: city
+          in: query
+          schema:
+            type: string
+          description: Название города
+          required: true
+      responses:
+        200:
+          description: Показатели погоды
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  condition:
+                    type: string
+                    description: Погодные условия
+                  feels_like:
+                    type: number
+                    description: Температура в градусах Цельсия по осущениям
+                  humidity:
+                    type: number
+                    description: Относительная влажность в процентах
+                  maximum_temperature:
+                    type: number
+                    description: Максимальная температура в градусах Цельсия
+                  minimum_temperature:
+                    type: number
+                    description: Минимальная температура в градусах Цельсия
+                  pressure:
+                    type: number
+                    description: Давление в миллиметрах ртутного столба
+                  temperature:
+                    type: number
+                    description: Температура в грудусах Цельсия
+                  wind_speed:
+                    type: number
+                    description: Скорость ветра в метрах в секунду
+                required:
+                  - condition
+                  - feels_like
+                  - humidity
+                  - maximum_temperature
+                  - minimum_temperature
+                  - pressure
+                  - temperature
+                  - wind_speed
+        400:
+          description: Город не указан
+          content:
+            text/plain:
+              schema:
+                type: string
+        404:
+          description: Город не найден
+          content:
+            text/plain:
+              schema:
+                type: string
+        500:
+          description: Что-то пошло не так
+          content:
+            text/plain:
+              schema:
+                type: string
