@@ -9,7 +9,7 @@ servers:
   - url: https://weerman.herokuapp.com
 
 paths:
-  /current_weather:
+  /current-weather:
     get:
       operationId: getCurrentWeatherForCity
       summary: Узнать текущую погоду в городе
@@ -66,18 +66,36 @@ paths:
         400:
           description: Город не указан
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Сообщение об ошибке
+                required:
+                  - error
         404:
           description: Город не найден
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Сообщение об ошибке
+                required:
+                  - error
         500:
           description: Что-то пошло не так
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Сообщение об ошибке
+                required:
+                  - error
