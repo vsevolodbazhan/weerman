@@ -1,4 +1,4 @@
-from flask import Flask, request, abort
+from flask import Flask, request
 
 from requests import RequestException
 
@@ -8,21 +8,21 @@ from .weather import get_weather_by_coordinates
 app = Flask(__name__)
 
 
-@app.route("/current_weather")
+@app.route("/current-weather", methods=["GET"])
 def current_weather():
     try:
         city = request.args["city"]
     except KeyError:
-        abort(400)
+        return "City must be specified.", 400
 
     try:
         coordinates = get_city_coordinates(city)
     except ValueError:
-        abort(404)
+        return "City does not exist.", 404
 
     try:
         weather = get_weather_by_coordinates(coordinates)
     except RequestException:
-        abort(500)
+        return "Something went wrong.", 500
 
     return weather._asdict()
