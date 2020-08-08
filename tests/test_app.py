@@ -14,8 +14,8 @@ def client(app):
     return app.test_client()
 
 
-def test_weather_with_valid_city(client):
-    response = client.get("/weather?city=Владивосток")
+def test_current_weather_with_valid_city(client):
+    response = client.get("/current_weather?city=Владивосток")
     assert response.status_code == 200
 
     weather = response.get_json()
@@ -33,17 +33,17 @@ def test_weather_with_valid_city(client):
     )
 
 
-def test_weather_with_no_city(client):
-    response = client.get("/weather")
+def test_current_weather_with_no_city(client):
+    response = client.get("/current_weather")
     assert response.status_code == 400
 
 
-def test_weather_with_non_existent_city(client):
-    response = client.get("/weather?city='Меня не существует'")
+def test_current_weather_with_non_existent_city(client):
+    response = client.get("/current_weather?city='Меня не существует'")
     assert response.status_code == 404
 
 
-def test_weather_with_wrong_api_key(client):
+def test_current_weather_with_wrong_api_key(client):
     os.environ["OPEN_WEATHER_API_KEY"] = "Wrong"
-    response = client.get("/weather?city=Владивосток")
+    response = client.get("/current_weather?city=Владивосток")
     assert response.status_code == 500
