@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "weerman"
-version = "0.1.0"
-description = ""
+version = "1.0.0"
+description = "Weather forecast microservice for Tomoru."
 authors = ["Vsevolod Bazhan <vsevozhan@yandex.ru>"]
 license = "MIT"
 

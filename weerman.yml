@@ -3,7 +3,7 @@ openapi: "3.0.2"
 info:
   title: Weerman
   description: Микросервис прогноза погоды
-  version: "0.0.1"
+  version: "1.0.0"
 
 servers:
   - url: https://weerman.herokuapp.com
